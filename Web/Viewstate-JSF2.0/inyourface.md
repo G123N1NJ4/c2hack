@@ -4,13 +4,13 @@ For trainings : https://www.slideshare.net/frohoff1/appseccali-2015-marshalling-
 
 Si la viewstate n'est pas chiffrée, et est interprêtée côté client. Il est possible de la décoder pour récupérer des informations. En plus de cela, il est possible de la patcher afin de modifier les valeurs des variables ou bien même réaliser de l'exécution de code.
 
-## ## Decode
+## Decode
 
 ```
 $ ./inyourface.sh viewstate.txt > decoded.txt
 ```
 
-## ## Patching de la viewstate
+## Patching de la viewstate
 
 ```
 $ ./inyourface.sh -patch 0x7e0040 userId 0 -outfile /tmp/patched.txt /tmp/viewstate.txt
