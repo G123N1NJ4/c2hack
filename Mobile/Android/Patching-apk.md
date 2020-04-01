@@ -63,3 +63,8 @@ Sur votre ordinateur lancer là commande suivante pour démarrer l'apk :
 
     $ frida -H 127.0.0.1 Gadget
 
+## Patching d'une application divisée en plusieurs APKs
+
+https://nickbloor.co.uk/2020/03/29/patching-android-split-apks/
+
+https://github.com/NickstaDB/patch-apk
