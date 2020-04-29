@@ -135,6 +135,49 @@ vmmap libhack.so
 disas Java_com_byeline_hackex_settings_SettingsManager_flux
 ```
 
+## Hook JNI native methods with Frida
+
+In order to list the functions present on the lib it is possible to use the following command:
+
+```
+nm --demangle --dynamic lib.so
+```
+
+Once you have find the function that you want to hook. There is 2 approach:
+
+- Hook on the Java layer (intercept the java calls to the JNI);
+- Dive to the implementation of the function in C.
+
+## Hook with the Java api
+
+```javascript
+Java.perform(function () {
+  // we create a javascript wrapper for MainActivity
+  var Activity = Java.use('com.toto.jniapp.MainActivity');
+  // replace the Jniint implementation
+  Activity.functionToHook.implementation = function () {
+    // console.log is used to report information back to us
+    console.log("Inside functionToHook now...");
+		//code...
+  };
+});
+```
+
+## Hook the native C implementation
+
+```javascript
+Interceptor.attach(Module.getExportByName('lib.so', 'functionToHook'), {
+    onEnter: function(args) {
+    },
+    onLeave: function(retval) {
+      // simply replace the value to be returned with 0
+      retval.replace(0);
+    }
+});
+```
+
 ## Links
 
 https://0x00sec.org/t/reversing-hackex-an-android-game/16243
+
+https://erev0s.com/blog/how-hook-android-native-methods-frida-noob-friendly/
