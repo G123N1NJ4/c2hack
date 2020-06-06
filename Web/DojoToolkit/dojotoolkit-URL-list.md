@@ -1,0 +1,16 @@
+dojo/resources/iframe_history.html
+dojox/av/FLAudio.js
+dojox/av/FLVideo.js
+dojox/av/resources/audio.swf
+dojox/av/resources/video.swf
+util/buildscripts/jslib/build.js
+util/buildscripts/jslib/buildUtil.js
+util/doh/runner.html
+dijit/tests/form/test_Button.html
+dojo/iframe_history.html?location=http://www.google.com
+dojo/iframe_history.html?location=javascript:alert%20%289999%2
+util/doh/runner.html?dojoUrl='/>foo</script><'"<script>alert(/xss/)</script>
+util/doh/runner.html?testUrL='/>foo</script><'"<script>alert(/xss/)</script>
+dijit/tests/form/test_Button.html?theme="/><script>alert(/xss/)</script>
+dojox/av/FLAudio.js
+dojox/av/FLVideo.js
