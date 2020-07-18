@@ -176,7 +176,9 @@ Interceptor.attach(Module.getExportByName('lib.so', 'functionToHook'), {
 });
 ```
 
+
 ## Links
+
 
 https://0x00sec.org/t/reversing-hackex-an-android-game/16243
 
