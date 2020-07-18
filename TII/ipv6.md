@@ -54,7 +54,7 @@ fe80::250:56ff:fead:75ce dev tap0 lladdr 00:50:56:ad:75:ce REACHABLE
 nmap -sS 10.10.10.70
 
 Starting Nmap 7.25BETA2 ( https://nmap.org ) at 2019-08-21 06:26 PDT
-Nmap scan report for kittenwar.sec660.org (10.10.10.70)
+Nmap scan report for 10.10.10.70
 Host is up (0.13s latency).
 Not shown: 997 closed ports
 PORT    STATE SERVICE
