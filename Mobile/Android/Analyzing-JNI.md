@@ -176,6 +176,9 @@ Interceptor.attach(Module.getExportByName('lib.so', 'functionToHook'), {
 });
 ```
 
+## Ghidra JNIAnalyzer
+
+https://github.com/Ayrx/JNIAnalyzer
 
 ## Links
 
