@@ -1,5 +1,14 @@
 # Analyze JNI methods from library
 
+## What to search on the begining
+
+Search for .so file inside:
+ - /lib/<cpu>/lib<name>.so
+ - /assets/<custom_name>
+
+Inside the source code:
+- `System.loadLibrary("hacklib")`
+- `System.load("lib/armeabi/hacklib.so")`
 
 ## Radare2
 ```
@@ -100,7 +109,7 @@ $ chmod 755 sysroot/system/bin/*
 Then add the lib
 
 ```
-cp <path>/libhack.so sysroot/system/lib/
+cp <path>/hacklib.so sysroot/system/lib/
 ```
 
 Enable the port forwarding in order to connect gdb to the process:
@@ -131,7 +140,7 @@ gdb-peda$ target remote :12345
 
 b Java_com_byeline_hackex_settings_SettingsManager_flux
 c
-vmmap libhack.so
+vmmap hacklib.so
 disas Java_com_byeline_hackex_settings_SettingsManager_flux
 ```
 
@@ -148,7 +157,7 @@ Once you have find the function that you want to hook. There is 2 approach:
 - Hook on the Java layer (intercept the java calls to the JNI);
 - Dive to the implementation of the function in C.
 
-## Hook with the Java api
+### Hook with the Java api
 
 ```javascript
 Java.perform(function () {
@@ -163,7 +172,7 @@ Java.perform(function () {
 });
 ```
 
-## Hook the native C implementation
+### Hook the native C implementation
 
 ```javascript
 Interceptor.attach(Module.getExportByName('lib.so', 'functionToHook'), {
@@ -176,13 +185,22 @@ Interceptor.attach(Module.getExportByName('lib.so', 'functionToHook'), {
 });
 ```
 
+### Hook with Medusa/JNITrace
+
+- https://github.com/Ch0pin/medusa
+- https://github.com/chame1eon/jnitrace
+
+`jnitrace -l hacklib.so com.example.myapplication`
+
 ## Ghidra JNIAnalyzer
 
-https://github.com/Ayrx/JNIAnalyzer
+- https://github.com/Ayrx/JNIAnalyzer
+- TODO JNI
 
 ## Links
 
-
-https://0x00sec.org/t/reversing-hackex-an-android-game/16243
-
-https://erev0s.com/blog/how-hook-android-native-methods-frida-noob-friendly/
+- https://0x00sec.org/t/reversing-hackex-an-android-game/16243
+- https://erev0s.com/blog/how-hook-android-native-methods-frida-noob-friendly/
+- https://valsamaras.medium.com/tracing-jni-functions-75b04bee7c58
+- https://www.ragingrock.com/AndroidAppRE/reversing_native_libs.html
+- https://github.com/Ch0pin/medusa
